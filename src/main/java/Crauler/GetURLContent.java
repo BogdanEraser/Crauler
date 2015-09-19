@@ -1,5 +1,7 @@
 package Crauler;
 
+import org.apache.log4j.Logger;
+
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -10,7 +12,10 @@ import java.net.URLConnection;
  */
 public class GetURLContent {
 
-     public static void writeToFileByUrl(String urlAddress, String fileName){
+    public static Logger logger = Logger.getLogger(GetURLContent.class);
+
+    public static void writeToFileByUrl(String urlAddress, String fileName) {
+
         try {
             URL url;
             url = new URL(urlAddress);
@@ -19,7 +24,7 @@ public class GetURLContent {
 
 
             File file = new File(fileName);
-            if (!file.exists()){
+            if (!file.exists()) {
                 file.createNewFile();
             }
 
@@ -28,14 +33,14 @@ public class GetURLContent {
 
             String inputLine;
 
-            while ((inputLine = br.readLine())!=null){  //пока не конец считанной строки по УРЛу, пишем в файл
+            while ((inputLine = br.readLine()) != null) {  //пока не конец считанной строки по УРЛу, пишем в файл
                 bw.write(inputLine);
             }
             bw.flush();
             bw.close();
             br.close();
             System.out.println("Seems to be done");
-
+            //logger.info("done getting data from " + urlAddress);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
