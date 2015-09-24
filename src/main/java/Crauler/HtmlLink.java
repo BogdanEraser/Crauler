@@ -14,8 +14,7 @@ public class HtmlLink {
 
     @Override
     public String toString() {
-        return new StringBuffer("Link : ").append(this.link)
-                .append(" Link Text : ").append(this.linkText).toString();
+        return new StringBuffer("Link : ").append(this.link).append(" Link Text : ").append(this.linkText).toString();
     }
 
     public String getLink() {

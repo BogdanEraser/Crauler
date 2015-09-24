@@ -6,6 +6,9 @@ import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 /**
  * Created by Bogdan Kukharskiy on 17.09.2015.
@@ -32,19 +35,34 @@ public class GetURLContent {
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 
             String inputLine;
+            StringBuffer megaString = new StringBuffer();
 
             while ((inputLine = br.readLine()) != null) {  //пока не конец считанной строки по УРЛу, пишем в файл
                 bw.write(inputLine);
+                megaString.append(inputLine);               // а заодно и готовим строку для парсинга
             }
             bw.flush();
             bw.close();
             br.close();
-            System.out.println("Seems to be done");
-            //logger.info("done getting data from " + urlAddress);
+            //System.out.println("Getting data from '" + urlAddress + "' seems to be done.\nStart parsing...");
+            logger.info("Done getting data from " + urlAddress);
+            logger.info("Start parsing \n");
+
+
+            HTMLLinkExtractor htmlLinkExtractor = new HTMLLinkExtractor();
+            Set<HtmlLink> htmlLinkSet = htmlLinkExtractor.grabHTMLLinks(String.valueOf(megaString));
+
+            Iterator<HtmlLink> htmlLinkIterator = htmlLinkSet.iterator();
+            while (htmlLinkIterator.hasNext()){
+                System.out.println(htmlLinkIterator.next());
+            }
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            logger.error("Error with URL. " + e);
         } catch (IOException e) {
             e.printStackTrace();
+            logger.error("I/O Error. " + e);
         }
 
     }
