@@ -4,5 +4,7 @@
     <file url="file://$PROJECT_DIR$/src/main/java/Crauler/GetURLContent.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/Crauler/HTMLLinkExtractor.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/Crauler/HtmlLink.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/WorkWithDB/GetData.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/WorkWithDB/MysqlConnect.java" charset="UTF-8" />
   </component>
 </project>
