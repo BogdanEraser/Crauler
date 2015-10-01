@@ -40,11 +40,11 @@ public class GetURLContent {
             bw.close();
             br.close();
             System.out.println("Seems to be done");
-            //logger.info("done getting data from " + urlAddress);
+            logger.info("done getting data from " + urlAddress);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            logger.error("Ошибка работы с URL. " + e);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Ошибка ввода/вывода. " + e);
         }
 
     }
