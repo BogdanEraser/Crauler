@@ -1,6 +1,5 @@
 package WorkWithDB;
 
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -11,8 +10,7 @@ import java.sql.Statement;
 public class GetData {
 
     public static ResultSet doQuery(String query) throws SQLException {
-        MysqlConnect db = new MysqlConnect();
-
+        MysqlConnect db = MysqlConnect.getDbCon();
         Statement statement = db.conn.createStatement();
         ResultSet res = statement.executeQuery(query);
         return res;

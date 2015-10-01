@@ -2,7 +2,6 @@ package WorkWithDB;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 
 /**
  * Created by Bogdan Kukharskiy on 29.09.2015.
@@ -10,9 +9,8 @@ import java.sql.PreparedStatement;
 public final class MysqlConnect {
     public static MysqlConnect db;
     public Connection conn;
-    private PreparedStatement statement;
 
-    MysqlConnect() {
+    protected MysqlConnect() {
         String url = "jdbc:mysql://localhost:3306/";
         String dbName = "bfl";
         String driver = "com.mysql.jdbc.Driver";
@@ -20,7 +18,7 @@ public final class MysqlConnect {
         String password = "masterkey";
         try {
             Class.forName(driver).newInstance();
-            this.conn = (Connection) DriverManager.getConnection(url + dbName, userName, password);
+            this.conn = DriverManager.getConnection(url + dbName, userName, password);
         } catch (Exception sqle) {
             sqle.printStackTrace();
         }
@@ -31,7 +29,6 @@ public final class MysqlConnect {
             db = new MysqlConnect();
         }
         return db;
-
     }
 
 }
