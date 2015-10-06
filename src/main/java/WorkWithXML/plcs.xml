@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Plcs>
 
-    <!-- <Plcs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:mySchema="plcs_scheme.xsd"> -->
+    <Plcs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:mySchema="plcs_scheme.xsd">
 
     <plc_type name="Simatic">
         <model name="S7-300" isRedundable="false">
             <component amount="512" unit="kb">RAM</component>
-            <component amount="250" unit="time to FP insructions, ns">CPU power</component>
+            <component amount="250" unit="time to FP instructions, ns">CPU power</component>
         </model>
         <model name="S7-400" isRedundable="true">
             <component amount="2048" unit="kb">RAM</component>
-            <component amount="20" unit="time to FP insructions, ns">CPU power</component>
+            <component amount="20" unit="time to FP instructions, ns">CPU power</component>
         </model>
     </plc_type>
 
     <plc_type name="ControlLogix">
         <model name="PLC 500" isRedundable="false">
             <component amount="256" unit="kb">RAM</component>
-            <component amount="475" unit="time to FP insructions, ns">CPU power</component>
+            <component amount="475" unit="time to FP instructions, ns">CPU power</component>
         </model>
         <model name="PLC 5000" isRedundable="false">
             <component amount="1024" unit="kb">RAM</component>
-            <component amount="50" unit="time to FP insructions, ns">CPU power</component>
+            <component amount="50" unit="time to FP instructions, ns">CPU power</component>
         </model>
     </plc_type>
 
