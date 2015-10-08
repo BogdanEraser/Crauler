@@ -12,8 +12,9 @@ public class XMLRunner {
     public static void main(String[] args) {
         File fileXML = new File("D:\\Java\\com\\SourceIT\\Crauler\\src\\main\\java\\WorkWithXML\\plcs.xml");
         File fileXSD = new File("D:\\Java\\com\\SourceIT\\Crauler\\src\\main\\java\\WorkWithXML\\plcs_scheme.xsd");
+
         try {
-            System.out.println(XMLValidator.validateXMLByXSD(fileXML, fileXSD));
+            System.out.println("Проверка валидности XML файла схеме: " + XMLValidator.validateXMLByXSD(fileXML, fileXSD));
         } catch (SAXException e) {
             e.printStackTrace();
         } catch (IOException e) {
