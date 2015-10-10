@@ -10,9 +10,10 @@ import java.io.IOException;
  */
 public class XMLRunner {
     public static void main(String[] args) {
-        File fileXML = new File("D:\\Java\\com\\SourceIT\\Crauler\\src\\main\\java\\WorkWithXML\\plcs.xml");
-        File fileXSD = new File("D:\\Java\\com\\SourceIT\\Crauler\\src\\main\\java\\WorkWithXML\\plcs_scheme.xsd");
+        File fileXML = new File("plcs.xml");
+        File fileXSD = new File("plcs_scheme.xsd");
 
+        //проверка валидности XML файла схеме
         try {
             System.out.println("Проверка валидности XML файла схеме: " + XMLValidator.validateXMLByXSD(fileXML, fileXSD));
         } catch (SAXException e) {
@@ -20,5 +21,7 @@ public class XMLRunner {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
     }
 }
