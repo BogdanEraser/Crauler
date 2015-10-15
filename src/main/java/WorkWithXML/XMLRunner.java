@@ -1,12 +1,18 @@
 package WorkWithXML;
 
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
+import com.fasterxml.jackson.xml.annotate.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.xml.annotate.JacksonXmlProperty;
+import com.fasterxml.jackson.xml.annotate.JacksonXmlRootElement;
 import org.xml.sax.SAXException;
 
 import java.io.File;
 import java.io.IOException;
+
+//import org.codehaus.jackson.JsonGenerationException;
+//import org.codehaus.jackson.map.JsonMappingException;
+//import org.codehaus.jackson.map.ObjectMapper;
+//import org.codehaus.jackson.*;
+//import com.fasterxml.jackson.*;
 /**
  * Created by Bogdan Kukharskiy on 08.10.15.
  */
@@ -24,6 +30,37 @@ public class XMLRunner {
             e.printStackTrace();
         }
 
+        @JacksonXmlRootElement(localName = "PLCS")
+        class OpenCredentials {
+
+            @JacksonXmlProperty(localName = "plc")
+            @JacksonXmlElementWrapper(useWrapping = false)
+            private Credentials[] credentials;
+
+            //getters, setters, toString
+        }
+
+
+        class Credentials {
+
+            @JacksonXmlProperty(isAttribute = true)
+            private String priv;
+
+            @JacksonXmlProperty(isAttribute = true)
+            private String type;
+
+            private String user;
+
+            @JacksonXmlProperty(localName = "client_token")
+            private String clientToken;
+
+            @JacksonXmlProperty(localName = "client_secret")
+            private String clientSecret;
+
+            //getters, setters, toString
+        }
+
+/*
         PLC plc = new PLC();
         ObjectMapper mapper = new ObjectMapper();
 
@@ -42,6 +79,8 @@ public class XMLRunner {
         } catch (IOException e) {
             e.printStackTrace();
         }
+*/
+
 
     }
 }
